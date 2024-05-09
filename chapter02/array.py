@@ -32,7 +32,7 @@ class Array:
     def clear(self, value):
         # Clears the array by setting each element to the given value
         for idx in range(len(self)):
-            self._items[idx] = None
+            self._items[idx] = value
 
     def __iter__(self):
         # Returns the array's iterator for traversing the elements
@@ -74,3 +74,18 @@ if __name__ == "__main__":
     print("After using `clear(None)` method")
     for item in array:
         print(item)
+        
+    
+    input_txt = "qwertyuaabbrrrttttQQQiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+
+    # create an array for the counters and initialize each element to 0
+    theCounters = Array(127)
+    theCounters.clear(0)
+
+    for ch in input_txt:
+        code = ord(ch)
+        theCounters[code] += 1
+
+
+    for i in range(26):
+        print("%c - %4d     %c - %4d" % (chr(65 + i), theCounters[65+i], chr(97+i), theCounters[97+i]))
